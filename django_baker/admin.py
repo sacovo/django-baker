@@ -163,7 +163,7 @@ class ExtendedModelAdminMixin(object):
                                      (field.get_internal_type() in self.filter_by_fields) or
                                      (number_field_choices(field) > 0) or
                                      (field.get_internal_type() == "ForeignKey" and
-                                      field.rel.to.objects.count() <= self.max_related_objects)] +
+                                      field.remote_field.to.objects.count() <= self.max_related_objects)] +
                                     self.extra_list_filter
                                     )
             list_filter = remove_dupes(combined_list_filter)
